@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 
 import Bio from '../components/Bio'
 import { rhythm } from '../utils/typography'
+import HeaderImg from '../../static/facecake.jpg'
 
 class BlogIndex extends React.Component {
   render() {
@@ -12,10 +13,28 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <div>
+      <div
+        style={{
+          backgroundImage: `url(${HeaderImg})`,
+          height: '100vh',
+          width: '100vw',
+          position: 'fixed',
+          backgroundSize: 'contain',
+          backgroundPositionX: '75%',
+          left: 0,
+          right: 0,
+          backgroundRepeat: 'no-repeat',
+          height: '100%',
+
+          /* Center and scale the image nicely */
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
         <Helmet title={siteTitle} />
-        <Bio />
-        {posts.map(({ node }) => {
+        {/* <Bio /> */}
+        {/* {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
             <div key={node.fields.slug}>
@@ -31,8 +50,8 @@ class BlogIndex extends React.Component {
               <small>{node.frontmatter.date}</small>
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
             </div>
-          )
-        })}
+          ) */}
+        {/* })} */}
       </div>
     )
   }
