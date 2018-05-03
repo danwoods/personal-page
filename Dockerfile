@@ -8,7 +8,7 @@ WORKDIR /app
 ADD . /app
 
 # Install any needed packages specified in requirements.txt
-#RUN npm i && npm run build && npx http-server -p 8080
+RUN npm i && npm run build
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
@@ -17,4 +17,4 @@ EXPOSE 80
 # ENV NAME World
 
 # Run app.py when the container launches
-# CMD ["python", "app.py"]
+# CMD ["npx", "http-server -p 8080"]
