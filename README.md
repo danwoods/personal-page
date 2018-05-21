@@ -1,16 +1,16 @@
-# gatsby-starter-blog
+# Personal page
 
-Gatsby starter for creating a blog
+Dan Woodson's personal page
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+---
 
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+Simple Gatsby blog
 
-## Running in development
+* To build - `sudo docker build -t SOME_VERSION .`
 
-`gatsby develop`
+* To run - `sudo docker run -p 80:8080 SOME_VERSION`
 
-## Install
+## Notes
 
 ```
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
