@@ -33,6 +33,17 @@ class BlogIndex extends React.Component {
         }}
       >
         <Helmet title={siteTitle} />
+        <div itemscope itemtype="http://schema.org/Person" style={{visibility: 'hidden'}}>
+<span itemprop="name" content="Dan Woodson"></span>
+<span itemprop="jobTitle" content="Software Architect"></span>
+<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+<span itemprop="addressLocality" content="Denver"></span>
+<span itemprop="addressRegion" content="CO"></span>
+</div>
+<span itemprop="url" content="https://danwoodson.com"></span>
+<span itemprop="knowsAbout" content="JavaScript, Software Architecture, Web Development, React"></span>
+<span itemprop="worksFor" content="Rachio"></span>
+</div>
         {/* <Bio /> */}
         {/* {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
