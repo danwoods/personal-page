@@ -11,6 +11,10 @@ import B from "../images/b.png"
 import C from "../images/c.png"
 import classnames from "classnames"
 import CssBaseline from "@material-ui/core/CssBaseline"
+import OpenFavicon from "../images/open.ico"
+import FilledFavicon from "../images/filled.ico"
+import Favicon from "react-favicon"
+import { Helmet } from "react-helmet"
 
 // Constants //////////////////////////////////////////////////////////////////
 
@@ -190,12 +194,15 @@ const aboutStyles = makeStyles(theme => ({
 }))
 
 export const About = props => {
-  // const siteTitle = get(this, "props.data.site.siteMetadata.title")
-  // const posts = get(this, "props.data.allMarkdownRemark.edges")
   const classes = aboutStyles()
+  const [favicon, setFavicon] = React.useState(0)
+  React.useEffect(() => {
+    setInterval(() => setFavicon(favicon => Number(!Boolean(favicon))), 3500)
+  }, [])
   return (
     <div>
-      {/* }<Helmet title={siteTitle} /> */}
+      <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
+      <Helmet title={"Dan Woodson"} />
       <CssBaseline />
       <div
         itemscope
