@@ -5,12 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-        bucketName: "danwoodson.com",
-      },
-    },
+    'gatsby-plugin-material-ui',
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

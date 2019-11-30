@@ -1,35 +1,26 @@
-import React from "react"
-import Typography from "@material-ui/core/Typography"
-import { makeStyles } from "@material-ui/core/styles"
-import { withStyles } from "@material-ui/core/styles"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import Divider from "@material-ui/core/Divider"
-import A from "../images/a.png"
-import B from "../images/b.png"
-import C from "../images/c.png"
-import classnames from "classnames"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import OpenFavicon from "../images/open.ico"
-import FilledFavicon from "../images/filled.ico"
-import Favicon from "react-favicon"
-import { Helmet } from "react-helmet"
-import {
-  StylesProvider,
-  createGenerateClassName,
-} from "@material-ui/core/styles"
+import { Helmet } from 'react-helmet'
+import { makeStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
+import A from '../images/a.png'
+import B from '../images/b.png'
+import C from '../images/c.png'
+import classnames from 'classnames'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Divider from '@material-ui/core/Divider'
+import Favicon from 'react-favicon'
+import FilledFavicon from '../images/filled.ico'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import OpenFavicon from '../images/open.ico'
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
 
 // Constants //////////////////////////////////////////////////////////////////
 
-const generateClassName = createGenerateClassName({
-  productionPrefix: "dan",
-  disableGlobal: true,
-})
-
 const sectionListStyles = makeStyles({
   root: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   item: {
     marginBottom: 0,
@@ -42,10 +33,10 @@ const SectionList = ({ items }) => {
   return (
     <List className={classes.root}>
       {items.map(item => (
-        <ListItem dense className={classes.item}>
+        <ListItem dense className={classes.item} key={item.title}>
           <ListItemText
             primary={item}
-            primaryTypographyProps={{ variant: "h6" }}
+            primaryTypographyProps={{ variant: 'h6' }}
           />
         </ListItem>
       ))}
@@ -62,18 +53,18 @@ const aboutSections = [
           margin: 0,
           height: 200,
           width: 150,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          alignSelf: "center",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          alignSelf: 'center',
         }}
       />
     ),
-    title: "Overview",
+    title: 'Overview',
     TextComponent: () => (
       <SectionList
         items={[
-          "Computer Science Degree",
-          "10+ years Professional Web Development Experience",
+          'Computer Science Degree',
+          '10+ years Professional Web Development Experience',
         ]}
       />
     ),
@@ -86,19 +77,19 @@ const aboutSections = [
           margin: 0,
           height: 200,
           width: 150,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          alignSelf: "center",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          alignSelf: 'center',
         }}
       />
     ),
-    title: "Areas of Expertise",
+    title: 'Areas of Expertise',
     TextComponent: () => (
       <SectionList
         items={[
-          "Web Application Architecture and Development",
-          "E-commerce solutions",
-          "Websites",
+          'Web Application Architecture and Development',
+          'E-commerce solutions',
+          'Websites',
         ]}
       />
     ),
@@ -111,19 +102,19 @@ const aboutSections = [
           margin: 0,
           height: 200,
           width: 150,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          alignSelf: "center",
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          alignSelf: 'center',
         }}
       />
     ),
-    title: "Personal",
+    title: 'Personal',
     TextComponent: () => (
       <SectionList
         items={[
-          "Married to Jennifer Woodson",
-          "Musician",
-          "Born in Murfreesboro, Tennessee",
+          'Married to Jennifer Woodson',
+          'Musician',
+          'Born in Murfreesboro, Tennessee',
         ]}
       />
     ),
@@ -133,26 +124,25 @@ const aboutSections = [
 // Individual Section /////////////////////////////////////////////////////////
 const aboutSectionStyles = makeStyles({
   root: {
-    display: "flex",
+    display: 'flex',
     padding: `${24}px 0`,
-    "&:nth-child(ODD)": {
-      flexDirection: "row-reverse",
-      justifyContent: "space-between",
-    },
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   rootReverse: {
-    display: "flex",
-    flexDirection: "row-reverse",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
   },
 })
+
 const AboutSection = ({ ImgComponent, title, TextComponent, idx }) => {
   const classes = aboutSectionStyles()
   return (
     <React.Fragment>
       <section
         className={classnames(classes.root, {
-          [classes.rootReverse]: idx % 2 === 1,
+          [classes.rootReverse]: idx % 2 !== 1,
         })}
       >
         <ImgComponent />
@@ -163,7 +153,7 @@ const AboutSection = ({ ImgComponent, title, TextComponent, idx }) => {
           <TextComponent />
         </div>
       </section>
-      <Divider style={{ height: 24, backgroundColor: "black" }} />
+      <Divider style={{ height: 24, backgroundColor: 'black' }} />
     </React.Fragment>
   )
 }
@@ -173,30 +163,30 @@ const AboutSection = ({ ImgComponent, title, TextComponent, idx }) => {
 const aboutStyles = makeStyles(theme => ({
   root: {
     maxWidth: theme.spacing(100),
-    width: "100%",
-    margin: "auto",
+    width: '100%',
+    margin: 'auto',
     marginTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
     padding: `0px ${theme.spacing(2)}px`,
   },
   header: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: theme.spacing(9),
     },
   },
   contactLink: {
-    position: "fixed",
+    position: 'fixed',
     top: theme.spacing(1),
     right: theme.spacing(1),
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       top: theme.spacing(3),
       right: theme.spacing(3),
     },
   },
   contactLinkText: {
-    fontFamily: "courier",
+    fontFamily: 'courier',
     fontSize: 11,
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       fontSize: 13,
     },
   },
@@ -209,53 +199,51 @@ export const About = props => {
     setInterval(() => setFavicon(favicon => Number(!Boolean(favicon))), 3500)
   }, [])
   return (
-    <StylesProvider generateClassName={generateClassName}>
-      <div>
-        <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
-        <Helmet title={"Dan Woodson"} />
-        <CssBaseline />
+    <div>
+      <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
+      <Helmet title={'Dan Woodson'} />
+      <CssBaseline />
+      <div
+        itemscope
+        itemtype="http://schema.org/Person"
+        style={{ visibility: 'hidden' }}
+      >
+        <span itemprop="name" content="Dan Woodson"></span>
+        <span itemprop="jobTitle" content="Software Architect"></span>
         <div
+          itemprop="address"
           itemscope
-          itemtype="http://schema.org/Person"
-          style={{ visibility: "hidden" }}
+          itemtype="http://schema.org/PostalAddress"
         >
-          <span itemprop="name" content="Dan Woodson"></span>
-          <span itemprop="jobTitle" content="Software Architect"></span>
-          <div
-            itemprop="address"
-            itemscope
-            itemtype="http://schema.org/PostalAddress"
-          >
-            <span itemprop="addressLocality" content="Denver"></span>
-            <span itemprop="addressRegion" content="CO"></span>
-          </div>
-          <span itemprop="url" content="https://danwoodson.com"></span>
-          <span
-            itemprop="knowsAbout"
-            content="JavaScript, Software Architecture, Web Development, React"
-          ></span>
+          <span itemprop="addressLocality" content="Denver"></span>
+          <span itemprop="addressRegion" content="CO"></span>
         </div>
-        <main className={classes.root}>
-          <Typography variant="h1" className={classes.header} gutterBottom>
-            {"Dan Woodson"}
-          </Typography>
-          <a
-            href={
-              "mailto:forhire@danwoodson.com?subject=Contacting%20from%20website"
-            }
-            className={classes.contactLink}
-            target={"_blank"}
-          >
-            <Typography variant={"caption"} className={classes.contactLinkText}>
-              {"CONTACT DAN"}
-            </Typography>
-          </a>
-          {aboutSections.map((section, idx) => (
-            <AboutSection {...section} idx={idx} />
-          ))}
-        </main>
+        <span itemprop="url" content="https://danwoodson.com"></span>
+        <span
+          itemprop="knowsAbout"
+          content="JavaScript, Software Architecture, Web Development, React"
+        ></span>
       </div>
-    </StylesProvider>
+      <main className={classes.root}>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          {'Dan Woodson'}
+        </Typography>
+        <a
+          href={
+            'mailto:forhire@danwoodson.com?subject=Contacting%20from%20website'
+          }
+          className={classes.contactLink}
+          target={'_blank'}
+        >
+          <Typography variant={'caption'} className={classes.contactLinkText}>
+            {'CONTACT DAN'}
+          </Typography>
+        </a>
+        {aboutSections.map((section, idx) => (
+          <AboutSection {...section} idx={idx} key={section.title} />
+        ))}
+      </main>
+    </div>
   )
 }
 
