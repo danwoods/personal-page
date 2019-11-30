@@ -15,8 +15,17 @@ import OpenFavicon from "../images/open.ico"
 import FilledFavicon from "../images/filled.ico"
 import Favicon from "react-favicon"
 import { Helmet } from "react-helmet"
+import {
+  StylesProvider,
+  createGenerateClassName,
+} from "@material-ui/core/styles"
 
 // Constants //////////////////////////////////////////////////////////////////
+
+const generateClassName = createGenerateClassName({
+  productionPrefix: "dan",
+  disableGlobal: true,
+})
 
 const sectionListStyles = makeStyles({
   root: {
@@ -200,51 +209,53 @@ export const About = props => {
     setInterval(() => setFavicon(favicon => Number(!Boolean(favicon))), 3500)
   }, [])
   return (
-    <div>
-      <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
-      <Helmet title={"Dan Woodson"} />
-      <CssBaseline />
-      <div
-        itemscope
-        itemtype="http://schema.org/Person"
-        style={{ visibility: "hidden" }}
-      >
-        <span itemprop="name" content="Dan Woodson"></span>
-        <span itemprop="jobTitle" content="Software Architect"></span>
+    <StylesProvider generateClassName={generateClassName}>
+      <div>
+        <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
+        <Helmet title={"Dan Woodson"} />
+        <CssBaseline />
         <div
-          itemprop="address"
           itemscope
-          itemtype="http://schema.org/PostalAddress"
+          itemtype="http://schema.org/Person"
+          style={{ visibility: "hidden" }}
         >
-          <span itemprop="addressLocality" content="Denver"></span>
-          <span itemprop="addressRegion" content="CO"></span>
+          <span itemprop="name" content="Dan Woodson"></span>
+          <span itemprop="jobTitle" content="Software Architect"></span>
+          <div
+            itemprop="address"
+            itemscope
+            itemtype="http://schema.org/PostalAddress"
+          >
+            <span itemprop="addressLocality" content="Denver"></span>
+            <span itemprop="addressRegion" content="CO"></span>
+          </div>
+          <span itemprop="url" content="https://danwoodson.com"></span>
+          <span
+            itemprop="knowsAbout"
+            content="JavaScript, Software Architecture, Web Development, React"
+          ></span>
         </div>
-        <span itemprop="url" content="https://danwoodson.com"></span>
-        <span
-          itemprop="knowsAbout"
-          content="JavaScript, Software Architecture, Web Development, React"
-        ></span>
-      </div>
-      <main className={classes.root}>
-        <Typography variant="h1" className={classes.header} gutterBottom>
-          {"Dan Woodson"}
-        </Typography>
-        <a
-          href={
-            "mailto:forhire@danwoodson.com?subject=Contacting%20from%20website"
-          }
-          className={classes.contactLink}
-          target={"_blank"}
-        >
-          <Typography variant={"caption"} className={classes.contactLinkText}>
-            {"CONTACT DAN"}
+        <main className={classes.root}>
+          <Typography variant="h1" className={classes.header} gutterBottom>
+            {"Dan Woodson"}
           </Typography>
-        </a>
-        {aboutSections.map((section, idx) => (
-          <AboutSection {...section} idx={idx} />
-        ))}
-      </main>
-    </div>
+          <a
+            href={
+              "mailto:forhire@danwoodson.com?subject=Contacting%20from%20website"
+            }
+            className={classes.contactLink}
+            target={"_blank"}
+          >
+            <Typography variant={"caption"} className={classes.contactLinkText}>
+              {"CONTACT DAN"}
+            </Typography>
+          </a>
+          {aboutSections.map((section, idx) => (
+            <AboutSection {...section} idx={idx} />
+          ))}
+        </main>
+      </div>
+    </StylesProvider>
   )
 }
 
