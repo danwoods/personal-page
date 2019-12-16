@@ -1,20 +1,19 @@
-import React from "react"
-import Typography from "@material-ui/core/Typography"
-import { makeStyles } from "@material-ui/core/styles"
-import { withStyles } from "@material-ui/core/styles"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import Divider from "@material-ui/core/Divider"
 import A from "../images/a.png"
 import B from "../images/b.png"
 import C from "../images/c.png"
-import classnames from "classnames"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import OpenFavicon from "../images/open.ico"
-import FilledFavicon from "../images/filled.ico"
+import Divider from "@material-ui/core/Divider"
 import Favicon from "react-favicon"
+import FilledFavicon from "../images/filled.ico"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
+import OpenFavicon from "../images/open.ico"
+import React from "react"
+import Typography from "@material-ui/core/Typography"
+import classnames from "classnames"
 import { Helmet } from "react-helmet"
+import { makeStyles, withStyles } from "@material-ui/core/styles"
 
 // Constants //////////////////////////////////////////////////////////////////
 
@@ -26,6 +25,7 @@ const sectionListStyles = makeStyles({
     marginBottom: 0,
   },
 })
+
 
 const SectionList = ({ items }) => {
   const classes = sectionListStyles()
