@@ -14,7 +14,6 @@ import Typography from '@material-ui/core/Typography'
 import classnames from 'classnames'
 import { Helmet } from 'react-helmet'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
-//import resume from '/dan-woodson_resume.pdf'
 
 // Constants //////////////////////////////////////////////////////////////////
 
