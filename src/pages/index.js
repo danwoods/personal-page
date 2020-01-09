@@ -192,6 +192,30 @@ const Link = props => {
   )
 }
 
+const Schema = () => (
+  <div
+    itemScope={true}
+    itemtype={'http://schema.org/Person'}
+    style={{ visibility: 'hidden' }}
+  >
+    <span itemprop="name" content="Dan Woodson"></span>
+    <span itemprop="jobTitle" content="Software Architect"></span>
+    <div
+      itemprop="address"
+      itemScope={true}
+      itemtype="http://schema.org/PostalAddress"
+    >
+      <span itemprop="addressLocality" content="Denver"></span>
+      <span itemprop="addressRegion" content="CO"></span>
+    </div>
+    <span itemprop="url" content="https://danwoodson.com"></span>
+    <span
+      itemprop="knowsAbout"
+      content="JavaScript, Software Architecture, Web Development, React"
+    ></span>
+  </div>
+)
+
 // All Sections ///////////////////////////////////////////////////////////////
 
 const aboutStyles = makeStyles(theme => ({
@@ -237,27 +261,7 @@ export const About = props => {
       <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
       <Helmet title={'Dan Woodson'} />
       <CssBaseline />
-      <div
-        itemscope
-        itemtype="http://schema.org/Person"
-        style={{ visibility: 'hidden' }}
-      >
-        <span itemprop="name" content="Dan Woodson"></span>
-        <span itemprop="jobTitle" content="Software Architect"></span>
-        <div
-          itemprop="address"
-          itemscope
-          itemtype="http://schema.org/PostalAddress"
-        >
-          <span itemprop="addressLocality" content="Denver"></span>
-          <span itemprop="addressRegion" content="CO"></span>
-        </div>
-        <span itemprop="url" content="https://danwoodson.com"></span>
-        <span
-          itemprop="knowsAbout"
-          content="JavaScript, Software Architecture, Web Development, React"
-        ></span>
-      </div>
+      <Schema />
       <main className={classes.root}>
         <Typography variant="h1" className={classes.header} gutterBottom>
           {'Dan Woodson'}
