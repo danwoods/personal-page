@@ -14,6 +14,11 @@ import Typography from '@material-ui/core/Typography'
 import classnames from 'classnames'
 import { Helmet } from 'react-helmet'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import Button from '@material-ui/core/Button'
 
 // Constants //////////////////////////////////////////////////////////////////
 
@@ -251,6 +256,7 @@ const aboutStyles = makeStyles(theme => ({
 export const About = props => {
   const classes = aboutStyles()
   const [favicon, setFavicon] = React.useState(0)
+  const [isStripeDialogOpen, setIsStripeDialogOpen] = React.useState(true)
 
   React.useEffect(() => {
     setInterval(() => setFavicon(favicon => Number(!Boolean(favicon))), 3500)
@@ -284,6 +290,38 @@ export const About = props => {
           <AboutSection {...section} idx={idx} />
         ))}
       </main>
+      <Dialog open={isStripeDialogOpen}>
+        <DialogContent>
+          <DialogContentText>
+            <div>{'To whom it may concern (at Stripe),'}</div>
+            <div>
+              {
+                'To be clear; this is URL owned by Dan Woodson, used for multiple purposes, one being a staging area and communication point for the work done by HUMAN/MACHINE, a company which Dan Woodson also owns.'
+              }
+            </div>
+            <div>
+              {
+                "If you take a second and look through the page, you'll notice an email and resume link toward the top right."
+              }
+            </div>
+            <div>
+              {
+                'If anyone needs my software consulting services, they can click the email link and begin the process of obtaining my services.'
+              }
+            </div>
+            <div>
+              {
+                'I hope this modification of my personal business page is sufficent to confirm that I am who I say I am, and that this page represents my business.'
+              }
+            </div>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setIsStripeDialogOpen(false)} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }
