@@ -34,13 +34,14 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
+    "deploy": "now",
     "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run dev",
+    "lint": "eslint ./src",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "start": "npm run dev",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "now"
   },
   "repository": {
     "type": "git",
