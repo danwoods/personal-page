@@ -14,6 +14,13 @@ import Typography from '@material-ui/core/Typography'
 import classnames from 'classnames'
 import { Helmet } from 'react-helmet'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
+import { ProjectList } from '../components/ProjectList'
+import { Layout } from '../components/layout'
+import MagazinesLogo from '../images/magazines-logo.png'
+import RachioLogo from '../images/rachio-logo.png'
+import SimpleBoothLogo from '../images/simplebooth-logo-01.png'
+import SimpleSubLogo from '../images/simplesubwater-logo-01.png'
+import Profile from '../images/profile.jpg'
 
 // Constants //////////////////////////////////////////////////////////////////
 
@@ -48,21 +55,30 @@ const aboutSections = [
     ImgComponent: () => (
       <div
         style={{
-          backgroundImage: `url(${A})`,
+          backgroundImage: `url(${Profile})`,
+          border: '16px solid black',
           margin: 0,
-          height: 200,
-          width: 150,
-          backgroundSize: 'contain',
+          marginRight: 16,
+          height: 300,
+          width: 250,
+          backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           alignSelf: 'center',
         }}
       />
     ),
-    title: 'Overview',
+    title: (
+      <Typography
+        variant={'h1'}
+        style={{ fontWeight: 'bold', fontSize: '4rem' }}
+      >
+        {'Dan Woodson'}
+      </Typography>
+    ),
     TextComponent: () => (
       <SectionList
         items={[
-          'Computer Science Degree',
+          'Consulting Developer',
           '10+ years Professional Web Development Experience',
         ]}
       />
@@ -82,13 +98,13 @@ const aboutSections = [
         }}
       />
     ),
-    title: 'Areas of Expertise',
+    title: 'Areas of Focus',
     TextComponent: () => (
       <SectionList
         items={[
           'Web Application Architecture and Development',
           'E-commerce solutions',
-          'Websites',
+          'IoT frontends',
         ]}
       />
     ),
@@ -97,26 +113,21 @@ const aboutSections = [
     ImgComponent: () => (
       <div
         style={{
-          backgroundImage: `url(${C})`,
+          display: 'none',
+          backgroundImage: `url(${Profile})`,
+          border: '16px solid black',
           margin: 0,
-          height: 200,
-          width: 150,
-          backgroundSize: 'contain',
+          marginRight: 16,
+          height: 300,
+          width: 250,
+          backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           alignSelf: 'center',
         }}
       />
     ),
-    title: 'Personal',
-    TextComponent: () => (
-      <SectionList
-        items={[
-          'Married to Jennifer Woodson',
-          'Musician',
-          'Born in Murfreesboro, Tennessee',
-        ]}
-      />
-    ),
+    title: 'Previous Work',
+    TextComponent: () => <ProjectList projects={projects} />,
   },
 ]
 
@@ -125,7 +136,7 @@ const aboutSections = [
 const aboutSectionStyles = makeStyles({
   root: {
     display: 'flex',
-    padding: `${24}px 0`,
+    // padding: `${24}px 0`,
   },
   rootReverse: {
     flexDirection: 'row-reverse',
@@ -150,7 +161,7 @@ const AboutSection = ({ ImgComponent, title, TextComponent, idx }) => {
           <TextComponent />
         </div>
       </section>
-      <Divider style={{ height: 24, backgroundColor: 'black' }} />
+      <Divider />
     </React.Fragment>
   )
 }
@@ -248,42 +259,69 @@ const aboutStyles = makeStyles(theme => ({
   },
 }))
 
+const projects = [
+  {
+    title: 'Magazines.com',
+    author: 'Dan',
+    img: MagazinesLogo,
+    content: 'Magazines.com',
+  },
+  {
+    title: 'Rachio',
+    author: 'Dan',
+    img: RachioLogo,
+    content: 'Rachio',
+  },
+  {
+    title: 'SimpleBooth',
+    author: 'Dan',
+    img: SimpleBoothLogo,
+    content: 'SimpleBooth',
+  },
+  {
+    title: 'SimpleSub Water',
+    author: 'Dan',
+    img: SimpleSubLogo,
+    content: 'SimpleSUB Water',
+  },
+].reverse()
+
 export const About = () => {
   const classes = aboutStyles()
   const [favicon, setFavicon] = React.useState(0)
 
   React.useEffect(() => {
-    setInterval(() => setFavicon(favicon => Number(!Boolean(favicon))), 3500)
+    setInterval(() => setFavicon(favicon => Number(!favicon)), 3500)
   }, [])
 
   return (
-    <div>
+    <div style={{ backgroundColor: 'rgba(239, 239, 239, 1)' }}>
       <Favicon url={favicon === 1 ? FilledFavicon : OpenFavicon} />
       <Helmet title={'Dan Woodson'} />
       <CssBaseline />
       <Schema />
-      <main className={classes.root}>
-        <Typography variant="h1" className={classes.header} gutterBottom>
-          {'Dan Woodson'}
-        </Typography>
-        <Link
-          className={classes.emailLink}
-          href={
-            'mailto:woodson.dan@gmail.com?subject=Contacting%20from%20website'
-          }
-          text={'contact'}
-          title={'contact'}
-        />
-        <Link
-          className={classes.resumeLink}
-          href={'/dan-woodson_resume.pdf'}
-          text={'resume'}
-          title={'resume'}
-        />
-        {aboutSections.map((section, idx) => (
-          <AboutSection {...section} idx={idx} />
-        ))}
-      </main>
+      <Layout>
+        <main className={classes.root}>
+          <Link
+            className={classes.emailLink}
+            href={
+              'mailto:woodson.dan@gmail.com?subject=Contacting%20from%20website'
+            }
+            text={'contact'}
+            title={'contact'}
+          />
+          <Link
+            className={classes.resumeLink}
+            href={'/dan-woodson_resume.pdf'}
+            text={'resume'}
+            title={'resume'}
+          />
+          {aboutSections.map((section, idx) => (
+            <AboutSection {...section} idx={idx} />
+          ))}
+          {/*} <ProjectList projects={projects} /> */}
+        </main>
+      </Layout>
     </div>
   )
 }

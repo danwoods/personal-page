@@ -31,10 +31,17 @@
     }
   },
   "overrides": {
+    "MuiGridListTile": {
+      "root": {
+        "border": "12px solid black",
+        "marginRight": 16
+      }
+    },
     "MuiDivider": {
       "root": {
         "height": 24,
-        "backgroundColor": "black"
+        "backgroundColor": "black",
+        "margin": "48px 0"
       }
     }
   }
