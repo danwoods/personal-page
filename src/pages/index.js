@@ -1,26 +1,24 @@
-import A from '../images/a.png'
-import B from '../images/b.png'
-import C from '../images/c.png'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import Favicon from 'react-favicon'
 import FilledFavicon from '../images/filled.ico'
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import MagazinesLogo from '../images/magazines-logo.png'
 import OpenFavicon from '../images/open.ico'
+import Profile from '../images/profile.jpg'
+import RachioLogo from '../images/rachio-logo.png'
 import React from 'react'
+import SimpleBoothLogo from '../images/simplebooth-logo-01.png'
+import SimpleSubLogo from '../images/simplesubwater-logo-01.png'
 import Typography from '@material-ui/core/Typography'
 import classnames from 'classnames'
 import { Helmet } from 'react-helmet'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import { ProjectList } from '../components/ProjectList'
 import { Layout } from '../components/layout'
-import MagazinesLogo from '../images/magazines-logo.png'
-import RachioLogo from '../images/rachio-logo.png'
-import SimpleBoothLogo from '../images/simplebooth-logo-01.png'
-import SimpleSubLogo from '../images/simplesubwater-logo-01.png'
-import Profile from '../images/profile.jpg'
+import { ProjectList } from '../components/ProjectList'
+import { makeStyles } from '@material-ui/core/styles'
 
 // Constants //////////////////////////////////////////////////////////////////
 
@@ -88,15 +86,16 @@ const aboutSections = [
     ImgComponent: () => (
       <div
         style={{
-          backgroundImage: `url(${B})`,
-          margin: 0,
+          margin: 16,
           height: 200,
           width: 150,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           alignSelf: 'center',
         }}
-      />
+      >
+        <ImportantDevicesIcon style={{ width: '100%', height: '100%' }} />
+      </div>
     ),
     title: 'Areas of Focus',
     TextComponent: () => (
