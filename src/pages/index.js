@@ -311,7 +311,7 @@ export const About = () => {
           />
           <Link
             className={classes.resumeLink}
-            href={'/dan-woodson_resume.pdf'}
+            href={'./dan_woodson_resume.pdf'}
             text={'resume'}
             title={'resume'}
           />
